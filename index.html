@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+Put your HTML text here<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -6,6 +6,7 @@
 <title>BI6ZONE Notice</title>
 
 <style>
+    /* Background */
     body {
         margin: 0;
         height: 100vh;
@@ -16,43 +17,107 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+        overflow: hidden;
         padding: 20px;
     }
 
+    /* Fade-in page animation */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Container slide-up animation */
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px) scale(0.96);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    /* Soft glowing pulse */
+    @keyframes glowPulse {
+        0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.15); }
+        50% { box-shadow: 0 0 28px rgba(255, 215, 0, 0.32); }
+        100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.15); }
+    }
+
     .container {
-        max-width: 700px;
-        backdrop-filter: blur(5px);
-        padding: 30px;
+        animation: slideUp 0.8s ease-out forwards, glowPulse 3.5s infinite ease-in-out;
+        max-width: 750px;
+        padding: 40px;
         border-radius: 14px;
         border: 1px solid rgba(255, 209, 84, 0.2);
-        background: rgba(0, 0, 0, 0.25);
-        box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(10px);
+        opacity: 0;
     }
 
     h1 {
-        font-size: 3rem;
+        font-size: 3.2rem;
         margin-bottom: 15px;
         font-weight: bold;
-        text-shadow: 0 0 12px #ffd44d;
+        text-shadow: 0 0 14px #ffd44d;
+        animation: fadeIn 1.5s ease;
     }
 
     p {
-        font-size: 1.2rem;
+        font-size: 1.23rem;
         line-height: 1.7;
         color: #f5de8b;
+        opacity: 0;
+        animation: fadeIn 1.2s ease forwards;
+        animation-delay: 0.4s;
     }
 
     .footer {
         margin-top: 25px;
-        font-size: 0.9rem;
-        opacity: 0.7;
+        font-size: 0.95rem;
+        opacity: 0;
+        animation: fadeIn 1.2s ease forwards;
+        animation-delay: 0.7s;
+    }
+
+    /* Floating particle glow dots */
+    .dot {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 215, 90, 0.25);
+        width: 4px;
+        height: 4px;
+        animation: float 6s infinite ease-in-out;
+        filter: blur(2px);
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) translateX(0); opacity: 0.9; }
+        50% { transform: translateY(-25px) translateX(10px); opacity: 0.3; }
+        100% { transform: translateY(0) translateX(0); opacity: 0.9; }
     }
 </style>
 </head>
 
 <body>
+
+    <!-- Subtle floating glowing dots -->
+    <script>
+        for (let i = 0; i < 25; i++) {
+            const dot = document.createElement("div");
+            dot.className = "dot";
+            dot.style.top = Math.random() * 100 + "vh";
+            dot.style.left = Math.random() * 100 + "vw";
+            dot.style.animationDuration = 5 + Math.random() * 5 + "s";
+            document.body.appendChild(dot);
+        }
+    </script>
+
     <div class="container">
         <h1>Site Update</h1>
+
         <p>
             Hello everyone, I apologize for all the drama thats been being caused do to some of the major features for this site such as the chat that I had added. I did not mean for any of this to go this way and I plan on putting the site back up. I just want to make sure everything is stable and okay before doing so as many people have been ranting on some serious topics such as racism, nsfw content, and other harsh topics that also include involving other people too. If any teachers or school staff do see this, I just want to let you know that this is not the way I wanted or even intended this to go as it started as a small project that I wasnt taking very seriously after i started building onto it. It went well until some major drama started to spread that I didnt realize was gonna go as far as it really did.
         </p>
@@ -63,5 +128,6 @@
 
         <div class="footer">– Jericho Anderson</div>
     </div>
+
 </body>
 </html>
